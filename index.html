@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -115,7 +115,7 @@ header{position:relative;z-index:3;display:flex;flex-wrap:wrap;align-items:cente
 .player{display:flex;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(243,240,230,.1);font-weight:600}
 .cap{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:8px;border-radius:50%;background:var(--cyan);color:var(--bg);font-family:var(--mono);font-size:12px;font-weight:700;vertical-align:middle}
 .vs{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:900;font-size:40px;color:var(--dim)}
-.player span:first-child{font-family:var(--mono);font-size:13px;color:var(--dim);font-weight:500}
+
 
 /* footer */
 footer{position:relative;z-index:2;border-top:1px solid rgba(243,240,230,.12)}
@@ -123,6 +123,73 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(243,240,230,.12)}
 .foot .display{font-size:clamp(64px,12vw,180px);line-height:.85}
 .foot-meta{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--dim);line-height:1.8}
 
+
+/* ---------- face-off ---------- */
+.faceoff{padding-top:clamp(72px,10vw,128px)}
+.fo-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(12px,2vw,24px);align-items:stretch}
+.fo-card{position:relative;overflow:hidden;border-radius:24px;padding:clamp(28px,4vw,48px);min-height:300px;display:flex;flex-direction:column;justify-content:flex-end}
+.fo-a{background:linear-gradient(160deg,#0E3D52 0%,#0C1013 70%);border:1px solid rgba(86,210,244,.35)}
+.fo-b{background:linear-gradient(200deg,#1B2440 0%,#0C1013 70%);border:1px solid rgba(243,240,230,.25);text-align:right}
+.fo-name{font-family:var(--display);font-weight:900;font-size:clamp(56px,8vw,120px);line-height:.85;text-transform:uppercase;margin:10px 0 14px}
+.fo-a .fo-name{color:var(--cyan)}
+.fo-tag{color:var(--muted);font-size:17px;line-height:1.5;max-width:320px}
+.fo-b .fo-tag{margin-left:auto}
+.fo-ghost{position:absolute;top:-30px;font-family:var(--display);font-weight:900;font-size:240px;line-height:1;color:rgba(243,240,230,.04);pointer-events:none}
+.fo-a .fo-ghost{left:-10px}.fo-b .fo-ghost{right:-10px}
+.vs{display:flex;align-items:center;justify-content:center}
+.vs span{display:flex;align-items:center;justify-content:center;width:clamp(72px,9vw,110px);height:clamp(72px,9vw,110px);border-radius:50%;background:var(--ball);font-family:var(--display);font-weight:900;font-size:clamp(30px,4vw,44px);color:#fff;box-shadow:0 0 0 8px rgba(200,16,46,.18),0 0 60px rgba(200,16,46,.45)}
+@media (max-width:760px){.fo-grid{grid-template-columns:1fr}.fo-b{text-align:left}.fo-b .fo-tag{margin-left:0}.vs{margin:-6px 0}}
+
+/* ---------- night plan ---------- */
+.plan{padding-top:clamp(72px,10vw,120px);padding-bottom:clamp(48px,8vw,96px)}
+.plan h2,.code h2,.kit h2,.pick h2{font-size:clamp(56px,8vw,112px);margin-bottom:40px}
+.tl{position:relative;padding-left:44px}
+.tl-line{position:absolute;left:13px;top:6px;bottom:6px;width:3px;border-radius:3px;background:rgba(243,240,230,.12);overflow:hidden}
+.tl-fill{position:absolute;inset:0;background:linear-gradient(180deg,var(--cyan),#3666CA);transform-origin:50% 0;transform:scaleY(0)}
+.tl-item{position:relative;padding:0 0 40px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-44px;top:4px;width:29px;height:29px;border-radius:50%;background:var(--bg);border:3px solid var(--cyan);box-shadow:0 0 18px rgba(86,210,244,.4)}
+.tl-item h3{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(30px,3.6vw,44px);text-transform:uppercase;line-height:1}
+.tl-item p{margin:8px 0 0;color:var(--muted);font-size:17px;line-height:1.55;max-width:560px}
+
+/* ---------- big scrub band ---------- */
+.band{position:relative;z-index:2;overflow:hidden;padding:clamp(24px,5vw,56px) 0;border-block:1px solid var(--line)}
+.band-row{font-family:var(--display);font-weight:900;font-size:clamp(80px,14vw,220px);line-height:.9;white-space:nowrap;text-transform:uppercase;will-change:transform}
+.band-row.r1{color:transparent;-webkit-text-stroke:2px rgba(243,240,230,.55)}
+.band-row.r2{color:var(--cyan);transform:translateX(-30%)}
+
+/* ---------- code of the turf ---------- */
+.code{padding-top:clamp(72px,10vw,120px);padding-bottom:clamp(24px,4vw,48px)}
+.code-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.code-card{padding:30px;border-radius:18px;background:var(--panel);border:1px solid rgba(243,240,230,.12);transition:border-color .25s, transform .25s}
+.code-card:hover{border-color:rgba(86,210,244,.55);transform:translateY(-4px)}
+.code-ic{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(86,210,244,.12);color:var(--cyan);margin-bottom:22px}
+.code-card h3{margin:0;font-family:var(--display);font-weight:800;font-size:30px;text-transform:uppercase;line-height:1}
+.code-card p{margin:10px 0 0;color:var(--muted);line-height:1.55}
+
+/* ---------- excuse bank ---------- */
+.ex-wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:stretch}
+.ex-card{flex:999 1 480px;min-width:0;min-height:300px;padding:clamp(28px,4vw,48px);border-radius:24px;background:linear-gradient(160deg,#10213A,#0C1013 75%);border:1px solid rgba(86,210,244,.35);display:flex;flex-direction:column;justify-content:center;perspective:900px}
+.ex-text{margin-top:18px;font-family:var(--display);font-weight:900;font-size:clamp(36px,5vw,64px);line-height:1;text-transform:uppercase}
+.ex-who{margin-top:18px;color:var(--muted);font-size:17px;font-style:italic}
+.ex-side{flex:1 1 280px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.ex-side p{margin:0;color:var(--muted);font-size:18px;line-height:1.55}
+.ex-btn{align-self:flex-start;border:0;cursor:pointer;font-family:var(--body)}
+.ex-note{font-size:13px!important;color:var(--dim)!important;font-family:var(--mono);letter-spacing:.06em}
+/* ---------- pick your side ---------- */
+.pick{padding-bottom:clamp(72px,10vw,120px)}
+.pick-box{position:relative;overflow:hidden;border-radius:24px;border:1px solid rgba(243,240,230,.14);background:radial-gradient(80% 120% at 50% 0%,rgba(47,95,203,.35),rgba(12,16,19,1) 70%);padding:clamp(28px,5vw,64px);text-align:center}
+.pick-box h2{margin-bottom:16px}
+.pick-sub{margin:0 auto 32px;max-width:520px;color:var(--muted);font-size:18px;line-height:1.55}
+.pick-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.pick-btn{min-height:60px;padding:0 34px;border-radius:999px;font-family:var(--display);font-weight:900;font-size:26px;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;border:2px solid transparent;transition:transform .2s, box-shadow .2s}
+.pick-btn:hover{transform:translateY(-3px)}
+.pick-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.pick-a{background:var(--cyan);color:var(--bg);box-shadow:0 0 36px rgba(86,210,244,.35)}
+.pick-b{background:transparent;color:var(--ink);border-color:var(--ink)}
+.pick-btn[aria-pressed="true"]{box-shadow:0 0 0 4px rgba(255,255,255,.25),0 0 48px rgba(86,210,244,.5)}
+.pick-result{margin-top:28px;min-height:44px;font-family:var(--display);font-weight:800;font-size:clamp(26px,3vw,36px);text-transform:uppercase}
+.spark{position:absolute;width:14px;height:14px;border-radius:50%;pointer-events:none}
 @media (max-width:560px){
   .logo{height:48px}
   .chip{display:none}
@@ -155,13 +222,9 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(243,240,230,.12)}
         <span class="word"><span class="knock">Knock</span></span>
         <span class="word"><span class="out">Out</span><span class="cyan">.</span></span>
       </h1>
-      <p class="hero-lede ko-sub">One turf. One hour under the lights. Tonight at Boomerang Chandivali, Turf 1 — Team Wilson against Team Mayuresh — eight a side, first ball 11:00 PM.</p>
+      <p class="hero-lede ko-sub">Wilson’s crew. Mayuresh’s crew. One turf, one winner. Tonight, bragging rights are earned ball by ball.</p>
       <div class="hero-ctas ko-sub">
         <a class="btn btn-cyan" href="#fixture">See the fixture</a>
-        <a class="btn btn-ghost" href="tel:+918451974363">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-          Call venue
-        </a>
       </div>
     </div>
 
@@ -204,27 +267,82 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(243,240,230,.12)}
 
   <div class="marquee" aria-hidden="true">
     <div class="track">
-      <div><span>KNOCKOUT PLAYOFF</span><span>●</span><span>TURF 1</span><span>●</span><span>BOOMERANG CHANDIVALI</span><span>●</span><span>11:00 PM</span><span>●</span><span>59 MINUTES</span><span>●</span><span>CRICKET</span><span>●</span></div>
-      <div><span>KNOCKOUT PLAYOFF</span><span>●</span><span>TURF 1</span><span>●</span><span>BOOMERANG CHANDIVALI</span><span>●</span><span>11:00 PM</span><span>●</span><span>59 MINUTES</span><span>●</span><span>CRICKET</span><span>●</span></div>
+      <div><span>KNOCKOUT PLAYOFF</span><span>●</span><span>TURF 1</span><span>●</span><span>BOOMERANG CHANDIVALI</span><span>●</span><span>11:00 PM</span><span>●</span><span>UNDER THE LIGHTS</span><span>●</span><span>CRICKET</span><span>●</span></div>
+      <div><span>KNOCKOUT PLAYOFF</span><span>●</span><span>TURF 1</span><span>●</span><span>BOOMERANG CHANDIVALI</span><span>●</span><span>11:00 PM</span><span>●</span><span>UNDER THE LIGHTS</span><span>●</span><span>CRICKET</span><span>●</span></div>
     </div>
   </div>
 
+
+  <section class="section wrap faceoff" aria-labelledby="fo-title">
+    <h2 id="fo-title" class="display ko-reveal" style="font-size:clamp(56px,8vw,112px);margin-bottom:40px">The<br>Face-off</h2>
+    <div class="fo-grid">
+      <div class="fo-card fo-a">
+        <div class="fo-ghost" aria-hidden="true">W</div>
+        <div class="mono" style="color:var(--cyan)">CAPTAIN · TEAM A</div>
+        <div class="fo-name">Wilson</div>
+        <div class="fo-tag">Sets the field, sets the tone. His crew comes in hungry and leaves with nothing to prove.</div>
+      </div>
+      <div class="vs"><span>VS</span></div>
+      <div class="fo-card fo-b">
+        <div class="fo-ghost" aria-hidden="true">M</div>
+        <div class="mono">CAPTAIN · TEAM B</div>
+        <div class="fo-name">Mayuresh</div>
+        <div class="fo-tag">Calm at the toss, ruthless at the crease. His crew plays for one thing only — the win.</div>
+      </div>
+    </div>
+  </section>
   <section id="fixture" class="section wrap">
     <div class="sec-head ko-reveal">
       <h2 class="display">The<br>Fixture</h2>
-      <div class="paid">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-        Slot booked &amp; paid
-      </div>
     </div>
     <div class="grid4">
       <div class="card ko-stat"><div class="mono">DATE</div><div class="big">FRI 09 OCT</div><div class="small">2026 · Tonight</div></div>
       <div class="card ko-stat"><div class="mono">FIRST BALL</div><div class="big cyan">11:00 PM</div><div class="small">Stumps 11:59 PM</div></div>
-      <div class="card ko-stat"><div class="mono">ON THE CLOCK</div><div class="big">59 MIN</div><div class="small">One slot, no extra time</div></div>
-      <div class="card ko-stat"><div class="mono">GROUND</div><div class="big">TURF 1</div><div class="small">₹1,800 slot · 16 players</div></div>
+      <div class="card ko-stat"><div class="mono">ON THE CLOCK</div><div class="big">ONE HOUR</div><div class="small">Under the lights</div></div>
+      <div class="card ko-stat"><div class="mono">GROUND</div><div class="big">TURF 1</div><div class="small">Night cricket</div></div>
     </div>
   </section>
 
+
+  <section class="section wrap plan">
+    <h2 class="display ko-reveal">Night<br>Plan</h2>
+    <div class="tl">
+      <div class="tl-line" aria-hidden="true"><div class="tl-fill"></div></div>
+      <div class="tl-item"><div class="tl-dot" aria-hidden="true"></div><h3>Arrive &amp; warm up</h3><p>Get there early, stretch it out, get a few throwdowns in. Cold muscles don't win close games.</p></div>
+      <div class="tl-item"><div class="tl-dot" aria-hidden="true"></div><h3>The toss</h3><p>Captains in the middle. Call it right and the first decision of the night is yours.</p></div>
+      <div class="tl-item"><div class="tl-dot" aria-hidden="true"></div><h3>First innings</h3><p>Set the target. Find the gaps, run hard between the wickets, put pressure on the board.</p></div>
+      <div class="tl-item"><div class="tl-dot" aria-hidden="true"></div><h3>Innings break</h3><p>Quick huddle. Water, plans, one line from the captain. Then back out.</p></div>
+      <div class="tl-item"><div class="tl-dot" aria-hidden="true"></div><h3>The chase</h3><p>Hold your nerve. Every dot ball is a small win for the fielding side.</p></div>
+      <div class="tl-item"><div class="tl-dot" aria-hidden="true"></div><h3>Handshakes &amp; bragging</h3><p>Shake hands, then talk about it all week. That's how it works.</p></div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true">
+    <div class="band-row r1">Bat · Bowl · Believe · Bat · Bowl · Believe ·</div>
+    <div class="band-row r2">Knockout · Knockout · Knockout · Knockout ·</div>
+  </div>
+
+  <section class="section wrap code">
+    <h2 class="display ko-reveal">Code of<br>the Turf</h2>
+    <div class="code-grid">
+      <div class="code-card ko-code">
+        <div class="code-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 5.5c2 3.5 2 9.5 0 13M16 5.5c-2 3.5-2 9.5 0 13"/></svg></div>
+        <h3>Every ball is live</h3><p>No switching off. The game turns on the ball you weren't ready for.</p>
+      </div>
+      <div class="code-card ko-code">
+        <div class="code-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+        <h3>Back your crew</h3><p>Drop a catch? Next ball. Loudest cheers go to whoever needs them most.</p>
+      </div>
+      <div class="code-card ko-code">
+        <div class="code-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Respect the call</h3><p>Out is out. Argue less, play more — the turf clock doesn't stop for debates.</p>
+      </div>
+      <div class="code-card ko-code">
+        <div class="code-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.7V17c0 .6-.5 1-1 1.2C7.8 18.8 7 20.2 7 22M14 14.7V17c0 .6.5 1 1 1.2 1.2.6 2 2 2 3.8"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div>
+        <h3>Win loud, lose proud</h3><p>Celebrate big, take it on the chin. Both crews walk off as Knockout.</p>
+      </div>
+    </div>
+  </section>
   <section class="section wrap venue-sec">
     <div class="venue ko-reveal">
       <svg class="pitch" aria-hidden="true" viewBox="0 0 400 600" preserveAspectRatio="none">
@@ -238,45 +356,71 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(243,240,230,.12)}
         <h2 class="display">Boomerang<br>Chandivali</h2>
         <p class="addr">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Yadav Nagar, Chandivali, Powai, Mumbai 400072
+          Yadav Nagar, Chandivali, Powai, Mumbai
         </p>
       </div>
       <div class="venue-ctas">
         <a class="btn btn-light" href="https://www.google.com/maps/search/?api=1&amp;query=Boomerang+Chandivali+Yadav+Nagar+Powai+Mumbai+400072" target="_blank" rel="noopener">Open in Maps</a>
-        <a class="btn btn-ghost" href="tel:+918451974363">Call 84519 74363</a>
       </div>
     </div>
   </section>
 
   <section class="section wrap squads">
     <h2 class="display ko-reveal">The<br>Squads</h2>
-    <p class="mono ko-reveal" style="margin:-24px 0 32px">8 v 8 · 16 PLAYERS</p>
     <div class="grid2">
       <div class="card ko-reveal">
         <div class="team-head"><div><div class="team-name">TEAM A</div><div class="mono" style="margin-top:6px">CAPTAIN · WILSON</div></div><div class="team-dot" style="background:var(--cyan)"></div></div>
-        <div class="player"><span>01</span><span>Wilson <em class="cap" title="Captain">C</em></span></div>
-        <div class="player"><span>02</span><span>Abdul</span></div>
-        <div class="player"><span>03</span><span>Tahir</span></div>
-        <div class="player"><span>04</span><span>Parmeshwar</span></div>
-        <div class="player"><span>05</span><span>Param</span></div>
-        <div class="player"><span>06</span><span>Shubham</span></div>
-        <div class="player"><span>07</span><span>Atik</span></div>
-        <div class="player"><span>08</span><span>Danish</span></div>
+        <div class="player"><span>Wilson <em class="cap" title="Captain">C</em></span></div>
+        <div class="player"><span>Abdul</span></div>
+        <div class="player"><span>Tahir</span></div>
+        <div class="player"><span>Parmeshwar</span></div>
+        <div class="player"><span>Param</span></div>
+        <div class="player"><span>Shubham</span></div>
+        <div class="player"><span>Atik</span></div>
+        <div class="player"><span>Danish</span></div>
       </div>
       <div class="card ko-reveal">
         <div class="team-head"><div><div class="team-name">TEAM B</div><div class="mono" style="margin-top:6px">CAPTAIN · MAYURESH</div></div><div class="team-dot" style="background:var(--ink)"></div></div>
-        <div class="player"><span>01</span><span>Mayuresh <em class="cap" title="Captain">C</em></span></div>
-        <div class="player"><span>02</span><span>Saif</span></div>
-        <div class="player"><span>03</span><span>Sanchit</span></div>
-        <div class="player"><span>04</span><span>Bhavin</span></div>
-        <div class="player"><span>05</span><span>Nishant</span></div>
-        <div class="player"><span>06</span><span>Avinash</span></div>
-        <div class="player"><span>07</span><span>Anup</span></div>
-        <div class="player"><span>08</span><span>Arbaz</span></div>
+        <div class="player"><span>Mayuresh <em class="cap" title="Captain">C</em></span></div>
+        <div class="player"><span>Saif</span></div>
+        <div class="player"><span>Sanchit</span></div>
+        <div class="player"><span>Bhavin</span></div>
+        <div class="player"><span>Nishant</span></div>
+        <div class="player"><span>Avinash</span></div>
+        <div class="player"><span>Anup</span></div>
+        <div class="player"><span>Arbaz</span></div>
       </div>
     </div>
   </section>
 
+
+  <section class="section wrap kit">
+    <h2 class="display ko-reveal">Excuse<br>Bank</h2>
+    <div class="ex-wrap">
+      <div class="ex-card" id="exCard">
+        <div class="mono" style="color:var(--cyan)">TONIGHT'S OFFICIAL EXCUSE</div>
+        <div class="ex-text" id="exText">“The floodlight was in my eyes.”</div>
+        <div class="ex-who" id="exWho">— used after getting bowled</div>
+      </div>
+      <div class="ex-side">
+        <p>Out first ball? Dropped a sitter? Bowled a wide down leg? Don't panic. Grab a certified excuse before anyone asks.</p>
+        <button type="button" class="btn btn-cyan ex-btn" id="exBtn">Give me an excuse</button>
+        <p class="ex-note">Excuses are non-refundable and will not be accepted by the opposition.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap pick">
+    <div class="pick-box ko-reveal" id="pickBox">
+      <h2 class="display">Pick your side</h2>
+      <p class="pick-sub">Who's walking off with the bragging rights tonight? Make your call.</p>
+      <div class="pick-btns">
+        <button type="button" class="pick-btn pick-a" data-team="a" aria-pressed="false">Team Wilson</button>
+        <button type="button" class="pick-btn pick-b" data-team="b" aria-pressed="false">Team Mayuresh</button>
+      </div>
+      <div class="pick-result" id="pickResult" aria-live="polite"></div>
+    </div>
+  </section>
   <footer>
     <div class="wrap foot">
       <div class="display ko-reveal">See you<br>at <span class="cyan">11</span>.</div>
@@ -351,6 +495,89 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(243,240,230,.12)}
     scrollTrigger: { trigger: '.venue', start: 'top 80%', once: true } });
   g.from('.player', { x: -24, opacity: 0, duration: 0.5, stagger: 0.05,
     scrollTrigger: { trigger: '.squads', start: 'top 75%', once: true } });
+})();
+</script>
+
+<script>
+/* ---------- kit check + pick your side ---------- */
+(function () {
+  var g = window.gsap;
+  var EX = [
+    ['The floodlight was in my eyes.', 'used after getting bowled'],
+    ['That was a trial ball.', 'used after getting out first ball'],
+    ['The turf is faster than it looks.', 'used after a misfield'],
+    ['I was saving my energy for the second innings.', 'used after a slow walk to the crease'],
+    ['My shoes have no grip. Brand new, too.', 'used after slipping mid-run'],
+    ['I was looking for the single, not the catch.', 'used after dropping a sitter'],
+    ['The ball swung. A lot. Trust me.', 'used after bowling a wide'],
+    ['I called yes. Clearly said yes.', 'used after a run-out'],
+    ['The bat has a crack in it. Somewhere.', 'used after a top edge'],
+    ['I was being sporting. Letting them win.', 'used after losing the match'],
+    ['I haven’t played since college.', 'used before, during and after the game'],
+    ['The net was distracting me.', 'used after a shocking shot'],
+    ['Someone moved behind the bowler’s arm.', 'used after an lbw shout'],
+    ['I ate too much at dinner.', 'used after a dropped catch at fine leg']
+  ];
+  var exBtn = document.getElementById('exBtn'), exText = document.getElementById('exText'), exWho = document.getElementById('exWho'), exCard = document.getElementById('exCard');
+  var last = 0;
+  exBtn.addEventListener('click', function () {
+    var i; do { i = Math.floor(Math.random() * EX.length); } while (i === last && EX.length > 1);
+    last = i;
+    var swap = function () { exText.textContent = '“' + EX[i][0] + '”'; exWho.textContent = '— ' + EX[i][1]; };
+    if (!g) { swap(); return; }
+    g.timeline()
+      .to(exCard, { rotationX: 90, duration: .22, ease: 'power2.in' })
+      .add(swap)
+      .to(exCard, { rotationX: 0, duration: .5, ease: 'back.out(2)' })
+      .fromTo(exText, { scale: .92 }, { scale: 1, duration: .4, ease: 'back.out(3)' }, '<');
+  });
+
+  var box = document.getElementById('pickBox'), out = document.getElementById('pickResult');
+  var hype = {
+    a: ['Wilson’s crew it is. Bold call.', 'Backing Team Wilson. Loud and proud.'],
+    b: ['Mayuresh’s crew it is. Bold call.', 'Backing Team Mayuresh. Loud and proud.']
+  };
+  document.querySelectorAll('.pick-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var t = btn.getAttribute('data-team');
+      document.querySelectorAll('.pick-btn').forEach(function (o) { o.setAttribute('aria-pressed', o === btn ? 'true' : 'false'); });
+      var list = hype[t]; out.textContent = list[Math.floor(Math.random() * list.length)];
+      out.style.color = t === 'a' ? 'var(--cyan)' : 'var(--ink)';
+      if (!g) return;
+      g.fromTo(out, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: 'back.out(2)' });
+      var br = box.getBoundingClientRect(), bb = btn.getBoundingClientRect();
+      var cx = bb.left - br.left + bb.width / 2, cy = bb.top - br.top + bb.height / 2;
+      var cols = t === 'a' ? ['#56D2F4', '#5EE0FB', '#3666CA', '#F3F0E6'] : ['#F3F0E6', '#C8102E', '#9AA196', '#56D2F4'];
+      for (var i = 0; i < 28; i++) {
+        var d = document.createElement('span'); d.className = 'spark';
+        d.style.background = cols[i % cols.length]; d.style.left = cx + 'px'; d.style.top = cy + 'px';
+        box.appendChild(d);
+        var ang = Math.random() * Math.PI * 2, dist = 120 + Math.random() * 220;
+        g.to(d, { x: Math.cos(ang) * dist, y: Math.sin(ang) * dist - 60, scale: Math.random() * 0.8 + 0.4, opacity: 0, duration: 1 + Math.random() * .6, ease: 'power3.out', onComplete: (function (el) { return function () { el.remove(); }; })(d) });
+      }
+    });
+  });
+
+  /* scroll animations for the new sections */
+  if (!g || !window.ScrollTrigger || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  g.from('.fo-a', { x: -160, opacity: 0, duration: 1, ease: 'power4.out', scrollTrigger: { trigger: '.faceoff', start: 'top 75%', once: true } });
+  g.from('.fo-b', { x: 160, opacity: 0, duration: 1, ease: 'power4.out', scrollTrigger: { trigger: '.faceoff', start: 'top 75%', once: true } });
+  g.from('.vs span', { scale: 0, rotation: -180, duration: .9, delay: .45, ease: 'back.out(2.2)', scrollTrigger: { trigger: '.faceoff', start: 'top 75%', once: true } });
+  g.to('.vs span', { scale: 1.08, duration: .9, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 1.5 });
+
+  g.to('.tl-fill', { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '.tl', start: 'top 70%', end: 'bottom 60%', scrub: true } });
+  g.utils.toArray('.tl-item').forEach(function (el) {
+    g.from(el, { x: 40, opacity: 0, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 82%', once: true } });
+    g.from(el.querySelector('.tl-dot'), { scale: 0, duration: .5, ease: 'back.out(3)', scrollTrigger: { trigger: el, start: 'top 82%', once: true } });
+  });
+
+  g.to('.band-row.r1', { xPercent: -25, ease: 'none', scrollTrigger: { trigger: '.band', start: 'top bottom', end: 'bottom top', scrub: true } });
+  g.fromTo('.band-row.r2', { xPercent: -30 }, { xPercent: 0, ease: 'none', scrollTrigger: { trigger: '.band', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  g.from('.ko-code', { y: 80, opacity: 0, rotation: function (i) { return i % 2 ? 4 : -4; }, duration: .9, stagger: .12, ease: 'power3.out', scrollTrigger: { trigger: '.code-grid', start: 'top 80%', once: true } });
+  g.from('.ex-card', { rotationY: -25, x: -60, opacity: 0, transformPerspective: 900, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.kit', start: 'top 75%', once: true } });
+  g.from('.ex-side > *', { y: 30, opacity: 0, duration: .6, stagger: .1, scrollTrigger: { trigger: '.kit', start: 'top 75%', once: true } });
+  g.from('.pick-btn', { y: 30, opacity: 0, scale: .9, duration: .6, stagger: .12, ease: 'back.out(2)', scrollTrigger: { trigger: '.pick', start: 'top 75%', once: true } });
 })();
 </script>
 </body>
